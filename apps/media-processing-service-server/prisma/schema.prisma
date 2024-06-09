@@ -1,0 +1,62 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model MediaResponse {
+  createdAt     DateTime @default(now())
+  id            String   @id @default(cuid())
+  message       String?
+  processedData Json?
+  status        String?
+  updatedAt     DateTime @updatedAt
+}
+
+model MediaRequest {
+  createdAt DateTime @default(now())
+  data      Json?
+  id        String   @id @default(cuid())
+  typeField String?
+  updatedAt DateTime @updatedAt
+}
+
+model Video {
+  createdAt  DateTime  @default(now())
+  data       Json?
+  duration   Int?
+  format     String?
+  id         String    @id @default(cuid())
+  name       String?
+  resolution String?
+  size       Int?
+  updatedAt  DateTime  @updatedAt
+  uploadedAt DateTime?
+}
+
+model Image {
+  createdAt  DateTime  @default(now())
+  data       Json?
+  format     String?
+  id         String    @id @default(cuid())
+  name       String?
+  resolution String?
+  size       Int?
+  updatedAt  DateTime  @updatedAt
+  uploadedAt DateTime?
+}
+
+model Audio {
+  createdAt  DateTime  @default(now())
+  data       Json?
+  duration   Int?
+  format     String?
+  id         String    @id @default(cuid())
+  name       String?
+  size       Int?
+  updatedAt  DateTime  @updatedAt
+  uploadedAt DateTime?
+}
